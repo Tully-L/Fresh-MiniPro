@@ -33,12 +33,6 @@
       "default": "online",
       "required": true
     },
-    "unit": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::unit.unit",
-      "inversedBy": "products"
-    },
     "category": {
       "type": "relation",
       "relation": "manyToOne",
@@ -50,6 +44,34 @@
       "relation": "manyToOne",
       "target": "api::order-item.order-item",
       "inversedBy": "products"
+    },
+    "unit": {
+      "type": "enumeration",
+      "enum": [
+        "jin",
+        "bundles",
+        "packages",
+        "pieces",
+        "units",
+        "boxes",
+        "sheets",
+        "pots"
+      ],
+      "default": "jin",
+      "required": true
+    },
+    "picture": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

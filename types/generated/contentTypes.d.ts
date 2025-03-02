@@ -539,6 +539,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -549,6 +550,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::order-item.order-item'
     >;
+    picture: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     productName: Schema.Attribute.String & Schema.Attribute.Required;
     productStatus: Schema.Attribute.Enumeration<['online', 'offline']> &
       Schema.Attribute.Required &
@@ -558,36 +560,20 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
       Schema.Attribute.DefaultTo<'VG-001-J'>;
-    unit: Schema.Attribute.Relation<'manyToOne', 'api::unit.unit'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiUnitUnit extends Struct.CollectionTypeSchema {
-  collectionName: 'units';
-  info: {
-    description: '';
-    displayName: 'Unit';
-    pluralName: 'units';
-    singularName: 'unit';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::unit.unit'> &
-      Schema.Attribute.Private;
-    products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
-    publishedAt: Schema.Attribute.DateTime;
-    unitName: Schema.Attribute.String &
+    unit: Schema.Attribute.Enumeration<
+      [
+        'jin',
+        'bundles',
+        'packages',
+        'pieces',
+        'units',
+        'boxes',
+        'sheets',
+        'pots',
+      ]
+    > &
       Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'\u65A4'>;
+      Schema.Attribute.DefaultTo<'jin'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1114,7 +1100,6 @@ declare module '@strapi/strapi' {
       'api::order-item.order-item': ApiOrderItemOrderItem;
       'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
-      'api::unit.unit': ApiUnitUnit;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
