@@ -4,7 +4,7 @@
   "info": {
     "singularName": "address",
     "pluralName": "addresses",
-    "displayName": "Address"
+    "displayName": "地址"
   },
   "options": {
     "draftAndPublish": true
