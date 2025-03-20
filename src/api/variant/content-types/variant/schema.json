@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "variants",
+  "info": {
+    "singularName": "variant",
+    "pluralName": "variants",
+    "displayName": "Variant"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "variantName": {
+      "type": "string"
+    },
+    "variantDescription": {
+      "type": "text"
+    }
+  }
+}

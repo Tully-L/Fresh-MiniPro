@@ -21,9 +21,6 @@
       "type": "string",
       "required": true
     },
-    "alias": {
-      "type": "string"
-    },
     "productStatus": {
       "type": "enumeration",
       "enum": [
@@ -61,17 +58,26 @@
       "required": true
     },
     "picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "description": {
       "type": "text"
+    },
+    "alias": {
+      "type": "json"
+    },
+    "variants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::variant.variant"
     }
   }
 }

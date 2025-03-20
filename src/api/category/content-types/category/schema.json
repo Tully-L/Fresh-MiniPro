@@ -13,8 +13,7 @@
   "attributes": {
     "categoryName": {
       "type": "string",
-      "required": true,
-      "default": "普通蔬菜"
+      "required": false
     },
     "products": {
       "type": "relation",
